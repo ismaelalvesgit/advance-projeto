@@ -1,22 +1,16 @@
-# Events Api - @Author Ismael Alves <cearaismael1997@gmail.com>
-
+# backend - @Author Ismael Alves <cearaismael1997@gmail.com>
 Este projeto foi gerado com [Express.js](https://expressjs.com/pt-br/) versão 4.17.1.
 
-## Development server
-
+# Development server
 Rode `npm run dev` no cmd para rodar o servidor dev. Navege para `http://localhost:3000`. O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
 
-## Start in Server
-
+# Start in Server
 Rode `npm start` no cmd para rodar o servidor de prod Navege para `http://localhost:3000`
 
-## Build Docker
-
-Rode `./deploy-docker.sh` para SO linux ou `./deploy-docker.bat` para SO windos, esses arquivos vão gerar um nova imagem docker do projeto e mandalo para o repositorio configurado,
-o arquivo de configuração da imagem está  localizado em `Dockerfile`.
+# Build Docker
+Rode `npm run docker:build` para que seja gerada um nova imagem docker do projeto, o arquivo de configuração da imagem está  localizado em `Dockerfile`.
 
 ## Developer Debug
-
 Debug pelo vs code use a tecla `F5` copie e cole no `launch.json` as configurações abaixo.
 ```json
 {
@@ -29,62 +23,47 @@ Debug pelo vs code use a tecla `F5` copie e cole no `launch.json` as configuraç
 }
 ```
 
-## Testes
-
+# Testes
 Este projeto foi projeto com base no desenvolvimento [TDD](https://www.vector.com/int/en/lp/us/test-driven-development/?gclid=Cj0KCQiA_rfvBRCPARIsANlV66Nlrg_ef3hoOGlt4ZVr_Uzm-ZRGHjMYMFNZBa_NpIVgQy2XF9IAJY4aAnN1EALw_wcB) 
 foram utiladas as libs [jest](https://jestjs.io/docs/en/getting-started) versão 24.9.0 e 
 [supertest](https://www.npmjs.com/package/supertest) versão 4.0.2, [husky](https://www.npmjs.com/package/husky) versão 3.1.0
 para auto teste quando o projeto for subido para o repositorio do git.
 
-## Development TDD
-
+# Development TDD
 Para executar os testes automatizados rode `npm test` para iniciar o test criados no diretorio `test/`
 Caso queria entrar no modo de desenvolvimento seguro rode `npm run secure-mode`
 
-## Logs
-
+# Logs
 O projeto foi configurado para gerar e armazena logs de acesso e de erros organizados por dia
 os logs estão localizados em `logs/`, tambem sera enviado um email para o administrador com
 o id da requisição e o erro gerado.
 
-## DevOps
-
+# DevOps
 O projeto foi configurado para fazer [CICD](https://medium.com/@nirespire/what-is-cicd-concepts-in-continuous-integration-and-deployment-4fe3f6625007) integrado com
 [Jenkinis](https://www.jenkins.io/) arquivo de configuração localizado em `Jenkinisfile`.
 
-## Documentação
-
+# Documentação
 Foi criada uma documentação do projeto usando [apidoc](https://apidocjs.com/#getting-started)
 os arquivos da documentação estão localizados em `doc/` pra gerar um novo aterfato de documentação
 rode o comando `npm run doc` depois acesse a url `http://localhost:3000/documentacao`
 
-## Extra
+# Extra
 
-# Dependencias do projeto
-
+## Dependencias do projeto
 O projeto necessita que o SO onde o projeto esteja rodando contenha as ferramentas [python](https://www.python.org/)
 , [mongoDB](https://www.mongodb.com/download-center/community), [nodejs](https://nodejs.org/en/), [snyk](https://snyk.io/)
 
-# Healthcheck
-
+## Healthcheck
 Foi criado um serviço de analise de saúde do sistema analizando a conexão com o banco de dados e teste em network
 o serviço foi feito para ser executado em cada 12:00 HS de funcionamento do sistema, caso queira executalo manualmente
 navege para `http://localhost:3000/system/healthcheck`
 
-# Performace
-
+## Performace
 No projeto foi configurado [redis](https://redis.io/) por padrão cache expira em 60s,foi criado tambem
 politicas de [Throttling](https://www.progress.com/blogs/how-to-rate-limit-an-api-query-throttling-made-easy) então por padrão um endereço IP 
 dentro de um periodo de 15(quinze) minutos podera somente fazer 100 requisições na aplicação
 
-# Auto Backup
-
-Foi criado serviço secundario para executar auto backup do banco todo dia as 03:00 HS. 
-OBS: necessita ter instalado o [mongoDB](https://www.mongodb.com/download-center/community) no SO 
-a qual o projeto esta implandado, os arquivo de backup ficaram localizados em `backup/`
-
 # Variaveis de ambiente
-
 O projeto foi pre-configurado com algumas variaveis de ambiente que está localizado em `config/environments.js`.
 
 - ENVIROMENT = '(STRING) - `DEV | TEST | PROD` Caso essa variavel esteja presente no ambiente, A API por padrão ficara limitada a 100(duzentos) requisições por um periodo de 15(quinze) minutos'
@@ -98,7 +77,6 @@ O projeto foi pre-configurado com algumas variaveis de ambiente que está locali
 - DB_DATABASE = '(STRING) Nome da base de dados'
 
 # Suporte para upload de aquivos
-
 O projeto foi configurado para suporta o upload dos arquivos com extensão.
 
 - jpeg

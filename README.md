@@ -17,12 +17,12 @@ Rode `npm run cypress:open` no cmd para iniciar o painel de testes.
 ## Ambiente na maquina local
 para que este projeto funcione na sua maquina primeiro você vai precisar de algumas ferramentas instaladas em usa maquina
 - 1º [node.js](https://nodejs.org/en/) qualquer versão acima da V5
-- 2º [Angular CLI](https://github.com/angular/angular-cli) versão 8.3.26 rode o comando ```shell npm i @angular/cli@8 -g```
-- 3º [Cypress.js](https://www.cypress.io/) versão 5.1.0 rode o comando ```shell npm i cypress -g```
+- 2º [Angular CLI](https://github.com/angular/angular-cli) versão 8.3.26 rode o comando ```npm i @angular/cli@8 -g```
+- 3º [Cypress.js](https://www.cypress.io/) versão 5.1.0 rode o comando ```npm i cypress -g```
 - 4º [mongoDB](https://www.mongodb.com/) versão 3.4.9.
 
 ## Ambiente em Docker
-Rode ```shell docker-compose -d up --build``` para gerar o build de todo o ambiente do projeto.
+Rode ```docker-compose -d up --build``` para gerar o build de todo o ambiente do projeto.
 
 ## IMPORTANTE Configuração da base de dados
 Antes de iniciar qual ambiente sejá ele `LOCAL | DOCKERIZADO` deve ser criado duas base de dados no [mongoDB](https://www.mongodb.com/) uma para ambiente de DEV outra para ambiente de TEST. Para mais informações veirifique `./backend/config/environments.js` para as variaveis de ambiente ou `./backend/olheaqui/*.png` para demostração da criação das bases de dados usando [robot3T](https://robomongo.org/)
@@ -45,7 +45,7 @@ esta rodando no SO este projeto.
 Deixei outros `README.md` nas pastas dos prejeto com maior detalhamento do projeto respectivo.
 
 ## Extra 
-O projeto BACKEND possui uma documentação das rotas da api basta roda o comando ```shell npm run doc```, depois
+O projeto BACKEND possui uma documentação das rotas da api basta roda o comando ```npm run doc```, depois
 navegar para `http://localhost:3000/documentacao/`, tambem deixei um arquivo localicado `./backend/docker-compose.yml` para facilitar os teste teste projeto.
 
 ![App UI](/app.png)
