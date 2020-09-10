@@ -54,14 +54,13 @@ O projeto necessita que o SO onde o projeto esteja rodando contenha as ferrament
 , [mongoDB](https://www.mongodb.com/download-center/community), [nodejs](https://nodejs.org/en/), [snyk](https://snyk.io/)
 
 ## Healthcheck
-Foi criado um serviço de analise de saúde do sistema analizando a conexão com o banco de dados e teste em network
-o serviço foi feito para ser executado em cada 12:00 HS de funcionamento do sistema, caso queira executalo manualmente
+Foi criado um serviço de analise de saúde do sistema analizando a conexão com o banco de dados, caso queira executalo
 navege para `http://localhost:3000/system/healthcheck`
 
 ## Performace
-No projeto foi configurado [redis](https://redis.io/) por padrão cache expira em 60s,foi criado tambem
+No projeto foi configurado [redis](https://redis.io/) por padrão cache expira em 60s, foi criado tambem
 politicas de [Throttling](https://www.progress.com/blogs/how-to-rate-limit-an-api-query-throttling-made-easy) então por padrão um endereço IP 
-dentro de um periodo de 15(quinze) minutos podera somente fazer 100 requisições na aplicação
+dentro de um periodo de 20s(vinte) segundos podera somente fazer 1000 requisições na aplicação
 
 # Variaveis de ambiente
 O projeto foi pre-configurado com algumas variaveis de ambiente que está localizado em `config/environments.js`.
@@ -101,4 +100,4 @@ O projeto foi configurado para suporta o upload dos arquivos com extensão.
 - bmp
 - icon
 
-![App UI](/app.png)
+![App UI](/backend/app.png)
