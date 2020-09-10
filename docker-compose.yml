@@ -1,0 +1,51 @@
+version: '3'
+
+services: 
+  frontend:
+      build: ./frontend
+      container_name: frontend
+      # volumes:
+      #   - /etc/localtime:/etc/localtime:ro # usar somente em SO linux
+      #   - /etc/timezone:/etc/timezone:ro  # usar somente em SO linux
+      restart: always
+      ports:
+        - 80:80
+  backend:
+    build: ./backend
+    container_name: backend
+    restart: always
+    environment: 
+      DB_HOST: mongo
+      DB_CACHE_HOST: redis
+    #   - /etc/localtime:/etc/localtime:ro # usar somente em SO linux
+    #   - /etc/timezone:/etc/timezone:ro # usar somente em SO linux
+    ports: 
+      - 3000:3000
+    links:
+      - mongo
+    depends_on: 
+      - 'mongo'
+  mongo:
+    image: mongo:3.4.9
+    restart: always
+    container_name: mongo
+    command: 
+      - --auth
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: advance2020
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo:/data/db
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    ports:
+      - 6379:6379
+networks:
+  default:
+volumes:
+  mongo:
+  

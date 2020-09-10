@@ -1,0 +1,207 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h4, h3{
+    color: #4882F7;
+}
+strong{
+    color: #4882F7;
+}
+
+/*--------------------------------------------------------------
+    Material Styles
+--------------------------------------------------------------*/
+.mat-form{
+    width: 100%;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline{
+    background-color: #F0F5FE;
+}
+
+.mat-form-field-prefix .mat-icon, .mat-form-field-suffix .mat-icon{
+    color: #4882F7;
+}
+
+.mat-icon{
+    color: #4882F7;
+}
+
+.mat-card{
+    background-color: #F0F5FE;
+    border-radius: 10px !important;
+    padding: 5px !important;
+}
+
+.mat-card .mat-fab{
+    margin: 5px 5px;
+    height: 45px;
+    width: 45px;
+}
+
+.mat-card .white{
+    background-color: white;
+}
+
+.mat-card .black{
+    background-color: black;
+}
+
+.mat-card .blue{
+    background-color: #77A3FC;
+}
+
+.mat-card .orange{
+    background-color: #F59943;
+}
+
+.mat-card .red{
+    background-color: #F25A5A;
+}
+
+.mat-card .green{
+    background-color: #38E893;
+}
+
+.mat-card .purple{
+    background-color: #CE8BED;
+}
+
+.mat-card .yellow{
+    background-color: #F0E04F;
+}
+
+.mat-card .mat-chip{
+    background-color: transparent !important;
+    color: #CEDEFD;
+    border: 2px solid #CEDEFD;
+}
+
+.mat-chip-selected{
+    color: #77A3FC !important;
+    border-color: #77A3FC !important;
+}
+
+.mat-card .product-img{
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    height: 50%;
+    border: 2px solid #CEDEFD;
+}
+
+.mat-card .product-name{
+    color: #4882F7;
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.mat-card .mat-raised-button{
+    margin: 10px 0;
+}
+
+.mat-drawer{
+    width: 260px !important;
+}
+
+.drawer-menu{
+    background: #103070;
+}
+
+.drawer-subtitle{
+    color: #4882F7;
+}
+
+.drawer-menu .mat-raised-button {
+    box-shadow: none !important;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px;
+    color: #103070;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.drawer-menu .prodcts{
+    background: #CEDEFD;
+}
+
+.drawer-menu .artist{
+    background: #9DBCFB;
+}
+
+.drawer-menu .faq{
+    background: #4882F7;
+    color: #fff;
+}
+
+.drawer-menu .contact{
+    background: #1241A1;
+    color: #fff;
+}
+
+.drawer-menu-cart {
+    width: 300px !important;
+}
+
+.drawer-menu-cart .product-img{
+    height: 40px;
+    border: 2px solid #CEDEFD;
+    margin: 5px 0;
+}
+
+.drawer-menu-cart .product-name{
+    color: #4882F7;
+    padding-top: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.drawer-menu-cart .empty-cart{
+    box-shadow: none;
+    border: 1px solid #77A3FC;
+    color: #77A3FC;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.product-img{
+    display: block;
+    height: 50px;
+    border: 2px solid #CEDEFD;
+}
+
+.product-name{
+    color: #4882F7;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.product-qnt{
+    background: #9DBCFB !important;
+    width: 24px !important;
+    height: 24px !important;
+    box-shadow: none !important;
+}
+
+.product-qnt .material-icons{
+    font-size: 15px;
+    margin-top: -8px;
+}
+
+.mat-chip{
+    background: white !important;
+    font-size: 12px;
+    border: 2px solid #4882F7;
+    color: #4882F7 !important;
+}
+
+.mat-raised-button {
+    width: 100% !important;
+    box-shadow: none;
+    color: white;
+    background: #4882F7;
+}

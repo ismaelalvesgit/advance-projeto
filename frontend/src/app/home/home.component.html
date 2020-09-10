@@ -1,0 +1,190 @@
+<mat-drawer-container  fxFlexFill style="height: 100%;">
+    <mat-drawer #drawer class="drawer-menu" mode="over">
+        <div class="col bg-white p-4">
+            <div class="row justify-content-center">
+                <img src="/assets/logo.png" height="50">
+            </div>
+            <p class="lead text-center mt-3 mb-5 drawer-subtitle">
+                Developer apparel &trade;
+            </p>
+        </div>
+        <button mat-raised-button (click)="drawer.close()">About US</button>
+        <button mat-raised-button class="prodcts" (click)="drawer.close()">Products</button>
+        <button mat-raised-button class="artist" (click)="drawer.close()">Be our artist</button>
+        <button mat-raised-button class="faq" (click)="drawer.close()">FAQ</button>
+        <button mat-raised-button class="contact" (click)="drawer.close()">Contact US</button>
+        <div class="row justify-content-center mt-3">
+            <img src="/assets/instagram.svg" height="50" class="m-1">
+            <img src="/assets/facebook.svg" height="50" class="m-1">
+            <img src="/assets/twitter.svg" height="50" class="m-1">
+        </div>
+        <div class="row justify-content-center">
+            <small class="text-white">Mobile version</small>
+        </div>
+    </mat-drawer>
+    
+    <mat-drawer position="end" #drawerCart class="drawer-menu-cart" mode="over">
+       <div class="col mt-3">
+            <div class="row justify-content-between align-self-start m-0">
+                <div class="row align-self-center m-0">
+                    <img src="/assets/cart.svg" class="mr-3">
+                    <h6>My Cart</h6>
+                </div>
+                <button mat-icon-button matTooltip="Fechar" (click)="drawerCart.close()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+            <ng-container *ngIf="produtoCarrinho && produtoCarrinho.length > 0"> 
+                <div class="row m-0 mt-3" *ngFor="let carrinho of produtoCarrinho; let i = index">
+                    <img class="product-img" [src]="carrinho.produto.foto">
+                    <div class="col">
+                        <h3 class="product-name">{{carrinho.produto.nome}}</h3>
+                        <div class="row align-self-cente m-0">
+                            <button mat-mini-fab matTooltip="diminuir a quantidade" class="product-qnt mr-1" (click)="removeQntCart(i)">
+                                <mat-icon>remove</mat-icon>
+                            </button>
+                            <button mat-mini-fab matTooltip="aumentar a quantidade" class="product-qnt mr-1" (click)="addQntCart(i)">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <strong class="mr-1">{{carrinho.quantidade}} x</strong>
+                            <mat-chip class="mr-1">{{carrinho.tamanho}}</mat-chip>
+                            <strong class="valor">= ${{carrinho.quantidade * carrinho.produto.valor}}</strong>
+                        </div>
+                    </div>
+                </div>
+                <button mat-raised-button class="empty-cart">Empty cart</button>
+                <mat-divider class="mb-3"></mat-divider>
+                <h6 class="subTotal" *ngFor="let carrinho of produtoCarrinho">{{carrinho.produto.nome}}-${{carrinho.quantidade * carrinho.produto.valor}}</h6>
+                <h4 id="total">Grand total - ${{total()}}</h4>
+                <mat-divider class="mb-3 mt-3"></mat-divider>
+                <button mat-raised-button class="procceed-cart">Procceed to checkout</button>
+            </ng-container>
+            <ng-container *ngIf="produtoCarrinho.length == 0">
+                <h4 style="margin-top: 120%;">You cart is empty</h4>
+                <button mat-raised-button class="procceed-cart" style="margin-top: 120%;" [disabled]="true">Procceed to checkout</button>
+            </ng-container>
+        </div>  
+    </mat-drawer>
+
+    <mat-toolbar-row>
+        <div class="row justify-content-between m-3">
+            <div class="col mb-2">
+                <img src="/assets/hamburger.svg" style="cursor: pointer;" (click)="drawer.toggle()">
+                <img src="/assets/logo.png" height="30" class="ml-3">
+            </div>
+            <div class="col">
+                <mat-form-field class="mat-form" appearance="outline">
+                    <mat-icon matPrefix>search</mat-icon>
+                    <input matInput [(ngModel)]="produtoFilter.nome" placeholder="Looking for something?">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <div class="row justify-content-end" style="cursor: pointer;" (click)="drawerCart.toggle()">
+                    <img src="/assets/cart.svg" class="mr-3"> 
+                    <h6 matBadge="{{produtoCarrinho.length}}" [matBadgeHidden]="produtoCarrinho.length == 0">My Cart</h6>
+                </div>
+            </div>
+        </div>
+    </mat-toolbar-row>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-3 col-lg-3">
+                <mat-card class="mat-elevation-z0">
+                    <div class="col">
+                        <h3>Colors</h3>
+                        <div class="row justify-content-start m-0">
+                            <button mat-fab class="white" (click)="corFilter('white')"></button>
+                            <button mat-fab class="black mat-elevation-z0" (click)="corFilter('black')"></button>
+                            <button mat-fab class="blue mat-elevation-z0" (click)="corFilter('blue')"></button>
+                            <button mat-fab class="orange mat-elevation-z0" (click)="corFilter('orange')"></button>
+                            <button mat-fab class="red mat-elevation-z0" (click)="corFilter('red')"></button>
+                            <button mat-fab class="green mat-elevation-z0" (click)="corFilter('green')"></button>
+                            <button mat-fab class="purple mat-elevation-z0" (click)="corFilter('purple')"></button>
+                            <button mat-fab class="yellow mat-elevation-z0" (click)="corFilter('yellow')"></button>
+                        </div>
+                        <div class="row justify-content-center m-0">
+                            <button type="button" matTooltip="Limpa filtro" mat-button (click)="produtoFilter.cor = ''" *ngIf="produtoFilter.cor">
+                                Limpar <mat-icon>clear</mat-icon>
+                            </button>
+                        </div>
+                        <h3 class="mt-2">Sizes</h3>
+                        <div class="row m-0">
+                            <mat-chip-list [selectable]="produtoFilter.tamanhos[0]">
+                                <mat-chip (click)="sizeFilter('XS')">XS</mat-chip>
+                                <mat-chip (click)="sizeFilter('S')">S</mat-chip>
+                                <mat-chip (click)="sizeFilter('M')">M</mat-chip>
+                                <mat-chip (click)="sizeFilter('L')">L</mat-chip>
+                                <mat-chip (click)="sizeFilter('XL')">XL</mat-chip>
+                                <mat-chip (click)="sizeFilter('XXL')">XXL</mat-chip>
+                            </mat-chip-list>
+                        </div>
+                        <div class="row justify-content-center m-0">
+                            <button type="button" matTooltip="Limpa filtro" mat-button (click)="produtoFilter.tamanhos = []" *ngIf="produtoFilter.tamanhos.length > 0">
+                                Limpar <mat-icon>clear</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+            <div class="col">
+                <div class="row justify-content-center">
+                    <div *ngFor="let produto of produtos | filterBy: produtoFilter" class="col-lg-4">
+                        <mat-card class="mat-elevation-z0 m-1">
+                            <div class="col">
+                                <img class="product-img" [src]="produto.foto">
+                                <h3 class="product-name">{{produto.nome}}</h3>
+                                <mat-chip-list>
+                                    <mat-chip *ngFor="let tamanho of produto.tamanhos">{{tamanho}}</mat-chip>
+                                </mat-chip-list>
+                                <button mat-raised-button (click)="openModal(modal, produto)">Add to cart</button>
+                            </div>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-drawer-container>
+
+<ng-template #modal>
+    <div class="row justify-content-end m-0">
+        <button mat-icon-button (click)="modalRef.hide()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="modal-body">
+      <div class="col">
+        <div class="row">
+            <img class="product-img mr-2" [src]="produto.foto">
+            <h3 class="product-name">{{produto.nome}}</h3>
+        </div>
+        <div class="row mt-2 mb-2">
+            <h4>Which size?</h4>
+        </div>
+        <div class="row">
+            <mat-chip *ngFor="let tamanho of produto.tamanhos" class="m-1" (click)="addSizeModal(tamanho)">{{tamanho}}</mat-chip>
+        </div>
+        <ng-container *ngIf="carrinho.tamanho">
+            <div class="row mt-2 mb-2">
+                <h4 id="quantidade">How many?</h4>
+            </div>
+            <div class="row align-self-center">
+                <button mat-mini-fab matTooltip="diminuir a quantidade" class="product-qnt mr-1" (click)="removeQntModal()">
+                    <mat-icon>remove</mat-icon>
+                </button>
+                <button mat-mini-fab matTooltip="aumentar a quantidade" class="product-qnt mr-1" (click)="addQntModal()">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <strong class="mr-1">{{carrinho.quantidade}} x</strong>
+                <mat-chip selected class="mr-1">{{carrinho.tamanho}}</mat-chip>
+                <strong id="valor">= ${{carrinho.quantidade * produto.valor}}</strong>
+            </div>
+        </ng-container>
+        <mat-divider class="mt-3 mb-3"></mat-divider>
+        <button mat-raised-button (click)="addProductByCart()" [disabled]="!carrinho.tamanho">
+            Add to cart
+        </button>
+      </div>
+    </div>
+</ng-template>
